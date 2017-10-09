@@ -1,0 +1,9 @@
+---
+- hosts: r1x01
+  roles:
+     - ../ansible-java
+  vars:
+    java_version: 8
+    install_jdk: 1
+    install_jre: 0
+    install_openjdk: 0

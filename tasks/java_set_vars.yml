@@ -1,0 +1,86 @@
+---
+## Set JAVA JDK / JRE vars ##
+- name: Setting variables Oracle JDK 6
+  set_fact:
+    java_jdk: "{{ java_6_jdk_package_name }}"
+  when: >
+    java_version == 6
+    and install_openjdk == 0
+
+- name: Setting variables Oracle JRE 6
+  set_fact:
+    java_jre: "{{ java_6_jre_package_name }}"
+  when: >
+    java_version == 6
+    and install_openjdk == 0
+
+- name: Setting variables Oracle JDK 7
+  set_fact:
+    java_jdk: "{{ java_7_jdk_package_name }}"
+  when: >
+    java_version == 7
+    and install_openjdk == 0
+
+- name: Setting variables Oracle JRE 7
+  set_fact:
+    java_jre: "{{ java_7_jre_package_name }}"
+  when: >
+    java_version == 7
+    and install_openjdk == 0
+
+- name: Setting variables Oracle JDK 8
+  set_fact:
+    java_jdk: "{{ java_8_jdk_package_name }}"
+  when: >
+    java_version == 8
+    and install_openjdk == 0
+
+- name: Setting variables Oracle JRE 8
+  set_fact:
+    java_jre: "{{ java_8_jre_package_name }}"
+  when: >
+    java_version == 8
+    and install_openjdk == 0
+
+## Set OPENJDK JDK / JRE vars ##
+- name: Setting variables OpenJDK JDK 6
+  set_fact:
+    java_jdk: "{{ openjdk_6_jdk_package_name }}"
+  when: >
+    java_version == 6
+    and install_openjdk == 1
+
+- name: Setting variables OpenJDK JRE 6
+  set_fact:
+    java_jre: "{{ openjdk_6_jre_package_name }}"
+  when: >
+    java_version == 6
+    and install_openjdk == 1
+
+- name: Setting variables OpenJDK JDK 7
+  set_fact:
+    java_jdk: "{{ openjdk_7_jdk_package_name }}"
+  when: >
+    java_version == 7
+    and install_openjdk == 1
+
+- name: Setting variables OpenJDK JRE 7
+  set_fact:
+    java_jre: "{{ openjdk_6_jre_package_name }}"
+  when: >
+    java_version == 7
+    and install_openjdk == 1
+
+- name: Setting variables OpenJDK JDK 8
+  set_fact:
+    java_jdk: "{{ openjdk_8_jdk_package_name }}"
+  when: >
+    java_version == 8
+    and install_openjdk == 1
+
+- name: Setting variables OpenJDK JRE 8
+  set_fact:
+    java_jre: "{{ openjdk_8_jre_package_name }}"
+  when: >
+    java_version == 8
+    and install_openjdk == 1

@@ -1,0 +1,58 @@
+---
+## Install Oracle Java JDK / JRE ##
+- name: "Install Java JDK"
+  apt:
+    name="{{ java_jdk }}"
+    state=latest
+    update_cache=true
+  when: >
+    install_jdk == 1
+    and install_openjdk == 0
+
+- name: "Install Java JRE"
+  apt:
+    name="{{ java_jre }}"
+    state=latest
+    update_cache=true
+  when: >
+    install_jre == 1
+    and install_openjdk == 0
+
+- name: "Install Java common"
+  apt:
+    name="java-common"
+    state=latest
+    update_cache=true
+  when: install_openjdk == 0
+
+## OpenJDK JDK / JRE 6 & 7 non dispo ATM pour la 8 ##
+- name: "Install OpenJDK JDK"
+  apt:
+    name="{{ java_jdk }}"
+    state=latest
+    update_cache=true
+  when: >
+    install_jdk == 1
+    and install_openjdk == 1
+#and (java_version == 6 or java_version == 7)
+
+- name: "Install OpenJDK JRE"
+  apt:
+    name="{{ java_jre }}"
+    state=latest
+    update_cache=true
+  when: >
+    install_jre == 1
+    and install_openjdk == 1
+#and (java_version == 6 or java_version == 7)
+
+- name: Find path to libjvm.so
+  find:
+    path="/usr/lib"
+    patterns="libjvm.so"
+    recurse=yes
+  register: path_libjvm
+
+- name: Adding LD_LIBRARY_PATH to /etc/ld.so.conf.d/libc.conf
+  lineinfile: dest="/etc/ld.so.conf.d/libc.conf" line="{{ path_libjvm.files[0].path.replace("libjvm.so", "") }}"
+  when: ansible_distribution_release == 'trusty' and java_version == 8 and install_jre == 1

@@ -1,0 +1,26 @@
+---
+### Ubuntu Precise / Trusty ###
+# - fail: msg="OpenJDK version 8 is not supported yet, sorry"
+#   become: yes
+#   when: >
+#     java_version == 8
+#     and install_openjdk == 1
+
+- include: java_set_vars.yml
+  become: yes
+  when: >
+    (ansible_distribution_release == "precise" or ansible_distribution_release == "trusty" or ansible_distribution_release == "xenial")
+    and (java_version == 6 or java_version == 7 or java_version == 8)
+
+- include: java_set_pj_repository.yml
+  become: yes
+  when: >
+    (ansible_distribution_release == "precise" or ansible_distribution_release == "trusty" or ansible_distribution_release == "xenial")
+    and (java_version == 6 or java_version == 7 or java_version == 8)
+    and install_openjdk == 0
+
+- include: java_install_package.yml
+  become: yes
+  when: >
+    (ansible_distribution_release == "precise" or ansible_distribution_release == "trusty" or ansible_distribution_release == "xenial")
+    and (java_version == 6 or java_version == 7 or java_version == 8)

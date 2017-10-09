@@ -1,0 +1,23 @@
+---
+- name: "Install python-apt (dependency for Ansible apt_repository)"
+  apt:
+    name="{{ item }}"
+    state=present
+    update_cache=true
+  with_items:
+    - python-apt
+
+- name: "Retrieve and install apt key from aptrepo"
+  apt_key:
+    url="http://aptrepo.services.local/systeme/java/prod/systeme.gpg.pub"
+    state=present
+
+- name: "Add repository deb java"
+  apt_repository:
+    repo='deb http://aptrepo.services.local/systeme/java/prod {{ ansible_distribution_release }} main'
+    state=present
+
+- name: "Add repository deb src java"
+  apt_repository:
+    repo='deb-src http://aptrepo.services.local/systeme/java/prod {{ ansible_distribution_release }} main'
+    state=present

@@ -1,0 +1,7 @@
+---
+# defaults file for java
+java_version: 8
+install_jdk: 0
+install_jre: 1
+install_openjdk: 0
+temp_dir: "/tmp/"

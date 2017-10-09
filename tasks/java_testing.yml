@@ -1,0 +1,13 @@
+---
+### Ubuntu Precise / Trusty / Xenial ###
+# Check if a java version number is returned
+- shell: java -version 2>&1 | grep version | awk '{print $3}' | sed 's/"//g'
+  register: java_version
+  changed_when: False
+
+- debug:
+    var: java_version.stdout
+
+- name: "Check that a java version is returned"
+  fail: msg="Java is not installed"
+  when: java_version.stdout == ""

@@ -1,0 +1,16 @@
+---
+# vars file for java
+
+## Packages names ##
+java_6_jdk_package_name: "oracle-j2sdk1.6"
+java_6_jre_package_name: "oracle-j2re1.6"
+java_7_jdk_package_name: "oracle-j2sdk1.7"
+java_7_jre_package_name: "oracle-j2re1.7"
+java_8_jdk_package_name: "oracle-java8-jdk"
+java_8_jre_package_name: "oracle-java8-jre"
+openjdk_6_jre_package_name: "openjdk-6-jre"
+openjdk_6_jdk_package_name: "openjdk-6-jdk"
+openjdk_7_jre_package_name: "openjdk-7-jre"
+openjdk_7_jdk_package_name: "openjdk-7-jdk"
+openjdk_8_jre_package_name: "openjdk-8-jre"
+openjdk_8_jdk_package_name: "openjdk-8-jdk"

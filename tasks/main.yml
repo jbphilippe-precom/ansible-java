@@ -1,0 +1,14 @@
+---
+# tasks file for java
+
+## INSTALLATION ##
+- include: java_install.yml
+  tags: [installation]
+
+## ROLLBACK ##
+- include: java_rollback.yml
+  tags: [rollback]
+
+## TESTING ##
+- include: java_testing.yml
+  tags: [testing]
